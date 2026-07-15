@@ -1,99 +1,71 @@
-# IntelliCite
+# IntelliCite UI
 
-## نبذة عن المشروع
+Frontend for **IntelliCite**, an AI-assisted research companion that helps students and researchers search academic literature, judge which papers are actually worth reading, and generate citations — without manually screening dozens of results.
 
-IntelliCite هو أداة مساعدة للبحث الأكاديمي تساعد الطلاب والباحثين على اكتشاف وتقييم وإدارة الأوراق الأكاديمية من خلال سير عمل مبسط. يقوم المستخدمون بالبحث حسب الموضوع ويحصلون على تقارير مدعومة بالذكاء الاصطناعي تشرح مدى صلة كل ورقة بحثية باستفسارهم، بالإضافة إلى شارات تقييم تلقائية مثل "عالي الاستشهاد" أو "قديم" بناءً على مقاييس الاستشهاد. يتضمن النظام ميزات عملية لحفظ الأوراق وتوليد الاستشهادات بتنسيقات متعددة وتتبع تاريخ البحث والوصول إلى ملفات PDF الكاملة، بالإضافة إلى أداة "Cite Check" التي تقيم جودة الأوراق وتقترح بدائل أفضل للمصادر الضعيفة. تتضمن الميزات المستقبلية المخططة إمكانية إنشاء ملصقات أكاديمية، مما يجعل هذا حلاً شاملاً لسير العمل البحثي يتجاوز مجرد اكتشاف الأوراق ليوفر تحليلاً ذكياً وتقييماً للجودة.
+The backend lives in a companion repo: [intellicite-api](https://github.com/EntisarOsiami/intellicite-api).
 
-## الفئة المستهدفة
+## The problem
 
-- الباحثون الأكاديميون
-- طلاب الجامعات
-- الطلاب في الدراسات العليا
+Academic search engines return a pile of papers with no easy way to judge relevance, credibility, or citation quality without reading each one. IntelliCite lets a user search by topic and get back an AI-generated report explaining *why* each paper matches their query, plus automatic quality badges ("highly cited", "recent", "outdated"). A separate "Cite Check" tool takes a paper's DOI and a research question and tells the user whether that source is actually a good fit — or suggests it isn't.
 
+## Features
 
-## الميزات الرئيسية
+- Landing page + authenticated search home for finding papers by topic
+- AI-generated relevance reports and quality badges per result
+- **Cite Check** flow for evaluating a specific paper against a research question
+- Save/bookmark papers and revisit them later
+- Search history view
+- Citation generator (APA, MLA, etc.) via `citation-js`
+- User profile, login/register with JWT-based auth
+- Admin dashboard: user management and app settings, behind a protected admin route
+- Bilingual UI (Arabic/English) via `react-i18next` with automatic language detection
 
-### البحث والاكتشاف
-- البحث عن الأوراق الأكاديمية حسب الموضوع
-- تكامل مع APIs مثل Semantic Scholar
-- تقارير مدعومة بالذكاء الاصطناعي
+## Tech stack
 
-### التقييم والتحليل
-- شارات تقييم تلقائية ("عالي الاستشهاد"، "حديث"، "قديم")
-- أداة "Cite Check" للتحقق من جودة الأوراق
-- اقتراح بدائل أفضل للمصادر الضعيفة
+| | |
+|---|---|
+| Framework | React 19 + Vite |
+| Routing | React Router 7 |
+| Styling | Tailwind CSS 4, Radix UI primitives, PrimeReact |
+| Animation | Framer Motion |
+| Localization | i18next / react-i18next |
+| Auth | `jwt-decode` (client-side token handling) |
+| Citations | `citation-js` |
+| HTTP | Axios |
 
-### الإدارة والتنظيم
-- حفظ الأوراق للرجوع إليها لاحقاً
-- تتبع تاريخ البحث
-- الوصول إلى ملفات PDF الكاملة
+## Getting started
 
-### الاستشهاد والتوثيق
-- توليد الاستشهادات بتنسيقات متعددة (APA، MLA، إلخ)
-- تصدير الاستشهادات
+```bash
+git clone https://github.com/EntisarOsiami/intellicite-ui.git
+cd intellicite-ui
+npm install
+cp .env.example .env   # then point VITE_BASE_URL at a running intellicite-api instance
+npm run dev
+```
 
+## Environment variables
 
+| Variable | Purpose |
+|---|---|
+| `VITE_BASE_URL` | Base URL of the `intellicite-api` backend this UI talks to |
 
-## تصميم المشروع
+## What I'd improve
 
-يمكن الاطلاع على التصميم الخاص بالمشروع عبر الرابط التالي:
+- Add a test suite — there currently isn't one
+- Add loading/error states around API calls more consistently across pages
+- Split the large `Router.jsx` route/layout logic into smaller pieces
+- Add basic accessibility pass (focus states, ARIA labels) given the amount of custom UI
+- Package name in `package.json` is still the generic `"frontend"` — worth renaming to `intellicite-ui`
 
-**Figma:** [https://www.figma.com/design/AOBplsedeefft6SPW3KOt5/Final-Tuwaiq-Project?t=MxYOGKv0Wr0tDNN5-1](https://www.figma.com/design/AOBplsedeefft6SPW3KOt5/Final-Tuwaiq-Project?t=MxYOGKv0Wr0tDNN5-1)
+## Design
 
-## روابط النشر
-- Frontend: https://intellicite-ui.onrender.com
-- Backend API: https://intellicite-api.onrender.com
+Figma: [Final Tuwaiq Project](https://www.figma.com/design/AOBplsedeefft6SPW3KOt5/Final-Tuwaiq-Project)
 
-## روابط GTIHUB
-- Frontend: https://github.com/Iimvalue/intellicite-ui
-- Backend: https://github.com/Iimvalue/intellicite-api
+## Team
 
-## التقنيات المستخدمة
-
-### Frontend
-| التقنية | الوصف |
-|---------|--------|
-| **React.js/Vite** | إطار عمل JavaScript للواجهة الأمامية |
-| **Tailwind CSS** | إطار عمل CSS للتصميم |
-| **shadcn** | مكتبة مكونات UI |
-| **Axios** | مكتبة لطلبات HTTP |
-| **React Icons** | مكتبة الأيقونات |
-| **Lucide React** | مكتبة أيقونات إضافية |
-| **JWT** | نظام المصادقة والأمان |
-
-### Backend
-| **التقنية** | **الوصف** |
-|-------------|-----------|
-| **Node.js** | بيئة تشغيل JavaScript للخادم |
-| **Express.js** | إطار عمل Node.js لبناء APIs |
-| **MongoDB/Mongoose** | قاعدة بيانات NoSQL ومكتبة ODM |
-| **JWT (jsonwebtoken)** | نظام المصادقة والأمان |
-| **bcryptjs** | مكتبة تشفير كلمات المرور |
-| **Axios** | مكتبة لطلبات HTTP |
-| **OpenAI API** | تكامل مع خدمات الذكاء الاصطناعي |
-| **CORS** | إدارة مشاركة الموارد عبر المنشأ |
-| **Helmet** | حماية أمان إضافية للتطبيق |
-| **dotenv** | إدارة متغيرات البيئة |
-
-## فريق العمل
+Originally built by:
 
 - **[عبدالرحمن الطامي](https://github.com/Iimvalue)**
 - **[عائشة عبدالله](https://github.com/ENG-Aisha-Abdullah)**
 - **[انتصار العتيبي](https://github.com/EntisarOsiami)**
 - **[طلال الشعبان](https://github.com/TalalAlrashedi)**
-
-## التثبيت والتشغيل
-
-```bash
-# استنساخ المشروع
-git clone https://github.com/Iimvalue/intellicite-ui.git
-
-# الانتقال إلى مجلد المشروع
-cd intellicite
-
-# تثبيت التبعيات
-npm install
-
-# تشغيل المشروع
-npm run dev
-```
