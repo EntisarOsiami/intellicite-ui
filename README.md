@@ -67,5 +67,5 @@ Originally built by:
 
 - **[عبدالرحمن الطامي](https://github.com/Iimvalue)**
 - **[عائشة عبدالله](https://github.com/ENG-Aisha-Abdullah)**
-- **[انتصار العتيبي](https://github.com/EntisarOsiami)**
+- **[انتصار العصيمي](https://github.com/EntisarOsiami)**
 - **[طلال الشعبان](https://github.com/TalalAlrashedi)**
