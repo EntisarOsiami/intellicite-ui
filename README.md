@@ -77,10 +77,10 @@ IntelliCite هو أداة مساعدة للبحث الأكاديمي تساعد 
 
 ## فريق العمل
 
-- **عبدالرحمن الطامي**
-- **عائشة عبدالله**
-- **انتصار العتيبي**
-- **طلال الشعبان**
+- **[عبدالرحمن الطامي](https://github.com/Iimvalue)**
+- **[عائشة عبدالله](https://github.com/ENG-Aisha-Abdullah)**
+- **[انتصار العتيبي](https://github.com/EntisarOsiami)**
+- **[طلال الشعبان](https://github.com/TalalAlrashedi)**
 
 ## التثبيت والتشغيل
 
